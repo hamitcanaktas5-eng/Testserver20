@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Roxy Store</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="dashboard-style.css">
+    <link rel="stylesheet" href="roxy-alerts.css">
+</head>
+<body>
+    <!-- Sidebar / Hamburger Menu -->
+    <div class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <div class="logo">
+                <div class="logo-icon">
+                    <i class="fas fa-bolt"></i>
+                </div>
+                <div class="logo-text">
+                    <span class="logo-main">ROXY</span>
+                    <span class="logo-sub">STORE</span>
+                </div>
+            </div>
+            <button class="sidebar-close" onclick="toggleSidebar()">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+
+        <nav class="sidebar-nav">
+            <a href="dashboard.html" class="nav-item active">
+                <i class="fas fa-home"></i>
+                <span>Ana Sayfa</span>
+            </a>
+            <a href="virtual-number.html" class="nav-item">
+                <i class="fas fa-mobile-alt"></i>
+                <span>Sanal Numara</span>
+            </a>
+            <a href="social-media.html" class="nav-item">
+                <i class="fas fa-chart-line"></i>
+                <span>Sosyal Medya</span>
+            </a>
+            <a href="balance.html" class="nav-item">
+                <i class="fas fa-wallet"></i>
+                <span>Bakiye Ekle</span>
+            </a>
+            <a href="reviews.html" class="nav-item">
+                <i class="fas fa-star"></i>
+                <span>Değerlendirmeler</span>
+            </a>
+        </nav>
+
+        <div class="sidebar-footer">
+            <button class="btn-support" onclick="window.location.href='support.html'">
+                <i class="fas fa-headset"></i>
+                <span>Destek</span>
+            </button>
+        </div>
+    </div>
+
+    <!-- Overlay -->
+    <div class="overlay" id="overlay" onclick="toggleSidebar()"></div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <!-- Top Bar -->
+        <div class="topbar">
+            <div class="topbar-left">
+                <button class="menu-toggle" onclick="toggleSidebar()">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <div class="topbar-logo">
+                    <span class="topbar-logo-text">ROXY</span>
+                    <span class="topbar-logo-sub">STORE</span>
+                </div>
+            </div>
+
+            <div class="topbar-right">
+                <div class="user-balance">
+                    <i class="fas fa-wallet"></i>
+                    <div class="balance-info">
+                        <span class="balance-label">Mevcut Bakiye</span>
+                        <span class="balance-amount">₺0.00</span>
+                    </div>
+                </div>
+                <div class="user-profile" onclick="window.location.href='profile.html'" style="cursor:pointer;">
+                    <img src="https://ui-avatars.com/api/?name=User&background=00D9FF&color=fff" alt="User">
+                    <span>Kullanıcı</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Dashboard Content -->
+        <div class="dashboard-container">
+            <!-- Welcome Section -->
+            <div class="welcome-section">
+                <h1>Hoş Geldiniz! 👋</h1>
+                <p>Hesabınızı yönetin ve hizmetlerimizden yararlanın</p>
+            </div>
+
+            <!-- Stats Cards -->
+            <div class="stats-grid">
+                <div class="stat-card balance-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-wallet"></i>
+                    </div>
+                    <div class="stat-info">
+                        <span class="stat-label">Mevcut Bakiye</span>
+                        <h2 class="stat-value">₺0.00</h2>
+                    </div>
+                    <button class="btn-add-balance" onclick="window.location.href='balance.html'">
+                        <i class="fas fa-plus"></i>
+                        Bakiye Yükle
+                    </button>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon orders">
+                        <i class="fas fa-box"></i>
+                    </div>
+                    <div class="stat-info">
+                        <span class="stat-label">Toplam Sipariş</span>
+                        <h2 class="stat-value">0</h2>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon pending">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <div class="stat-info">
+                        <span class="stat-label">Bekleyen</span>
+                        <h2 class="stat-value">0</h2>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon completed">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <div class="stat-info">
+                        <span class="stat-label">Tamamlanan</span>
+                        <h2 class="stat-value">0</h2>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quick Actions -->
+            <div class="section">
+                <h2 class="section-title">Hızlı İşlemler</h2>
+                <div class="quick-actions">
+                    <button class="action-btn" onclick="window.location.href='virtual-number.html'">
+                        <i class="fas fa-mobile-alt"></i>
+                        <span>Sanal Numara Al</span>
+                    </button>
+                    <button class="action-btn" onclick="window.location.href='social-media.html'">
+                        <i class="fas fa-chart-line"></i>
+                        <span>SMM Sipariş Ver</span>
+                    </button>
+                    <button class="action-btn" onclick="window.location.href='balance.html'">
+                        <i class="fas fa-wallet"></i>
+                        <span>Bakiye Yükle</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Recent Orders -->
+            <div class="section">
+                <h2 class="section-title">Son Siparişler</h2>
+                <div class="orders-table">
+                    <div class="empty-state">
+                        <i class="fas fa-box-open"></i>
+                        <h3>Henüz sipariş yok</h3>
+                        <p>Hizmetlerimizden yararlanmak için sipariş verebilirsiniz</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="dashboard-footer">
+            <div class="footer-content">
+                <div class="footer-support">
+                    <h4>Destek</h4>
+                    <div class="support-links">
+                        <a href="https://wa.me/447795203704" target="_blank">
+                            <i class="fab fa-whatsapp"></i>
+                            WhatsApp
+                        </a>
+                        <a href="https://t.me/roxysatici" target="_blank">
+                            <i class="fab fa-telegram"></i>
+                            Telegram
+                        </a>
+                    </div>
+                </div>
+                <div class="footer-copyright">
+                    <p>&copy; 2026 Roxy Store. Tüm hakları saklıdır.</p>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script src="roxy-alerts.js"></script>
+    <script src="dashboard-script.js"></script>
+</body>
+</html>

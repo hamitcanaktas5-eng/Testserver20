@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sosyal Medya - Roxy Store</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="social-media-style.css">
+    <link rel="stylesheet" href="roxy-alerts.css">
+</head>
+<body>
+
+    <!-- SIDEBAR -->
+    <div class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <div class="logo">
+                <div class="logo-icon"><img src="roxy-logo.svg" alt="Roxy" style="width:28px;height:28px;"></div>
+                <div class="logo-text">
+                    <span class="logo-main">ROXY</span>
+                    <span class="logo-sub">STORE</span>
+                </div>
+            </div>
+            <button class="sidebar-close" onclick="toggleSidebar()"><i class="fas fa-times"></i></button>
+        </div>
+        <nav class="sidebar-nav">
+            <a href="dashboard.html" class="nav-item"><i class="fas fa-home"></i><span>Ana Sayfa</span></a>
+            <a href="virtual-number.html" class="nav-item"><i class="fas fa-mobile-alt"></i><span>Sanal Numara</span></a>
+            <a href="social-media.html" class="nav-item active"><i class="fas fa-chart-line"></i><span>Sosyal Medya</span></a>
+            <a href="balance.html" class="nav-item"><i class="fas fa-wallet"></i><span>Bakiye Ekle</span></a>
+            <a href="reviews.html" class="nav-item"><i class="fas fa-star"></i><span>Değerlendirmeler</span></a>
+        </nav>
+        <div class="sidebar-footer">
+            <button class="btn-support" onclick="window.location.href='support.html'">
+                <i class="fas fa-headset"></i><span>Destek</span>
+            </button>
+        </div>
+    </div>
+    <div class="overlay" id="overlay" onclick="toggleSidebar()"></div>
+
+    <!-- ANA İÇERİK -->
+    <div class="main-content">
+
+        <!-- TOPBAR -->
+        <div class="topbar">
+            <div class="topbar-left">
+                <button class="menu-toggle" onclick="toggleSidebar()"><i class="fas fa-bars"></i></button>
+                <div class="topbar-logo">
+                    <span class="logo-main">ROXY</span>
+                    <span class="logo-sub" style="letter-spacing:1.5px;font-size:10px;color:#A0A0B8;font-weight:600;">STORE</span>
+                </div>
+            </div>
+            <div class="topbar-right">
+                <div class="user-balance">
+                    <i class="fas fa-wallet"></i>
+                    <div>
+                        <span class="balance-label">Mevcut Bakiye</span>
+                        <span class="balance-amount" id="userBalanceDisplay">₺0.00</span>
+                    </div>
+                </div>
+                <div class="user-avatar" onclick="window.location.href='profile.html'" style="cursor:pointer;">
+                    <img src="https://ui-avatars.com/api/?name=User&background=00D9FF&color=fff" alt="User">
+                    <span>Kullanıcı</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- SAYFA İÇERİĞİ -->
+        <div class="container">
+            <div class="page-header">
+                <h1><i class="fas fa-chart-line"></i> Sosyal Medya</h1>
+                <p>Instagram ve TikTok için takipçi, beğeni hizmetleri</p>
+            </div>
+
+            <!-- FORM KARTI -->
+            <div class="form-card">
+
+                <!-- API SEÇ -->
+                <!-- Platform Kartları -->
+                <div class="field-group">
+                    <label class="field-label">
+                        <i class="fas fa-layer-group"></i>
+                        Platform Seç
+                    </label>
+                    <div class="platform-cards">
+                        <button class="platform-card" id="pc-instagram" onclick="selectPlatform('instagram')">
+                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="platform-svg">
+                                <defs><linearGradient id="ig" x1="0%" y1="100%" x2="100%" y2="0%">
+                                    <stop offset="0%" style="stop-color:#f09433"/>
+                                    <stop offset="25%" style="stop-color:#e6683c"/>
+                                    <stop offset="50%" style="stop-color:#dc2743"/>
+                                    <stop offset="75%" style="stop-color:#cc2366"/>
+                                    <stop offset="100%" style="stop-color:#bc1888"/>
+                                </linearGradient></defs>
+                                <rect width="24" height="24" rx="6" fill="url(#ig)"/>
+                                <circle cx="12" cy="12" r="4" fill="none" stroke="white" stroke-width="1.8"/>
+                                <circle cx="17.5" cy="6.5" r="1.2" fill="white"/>
+                                <rect x="3" y="3" width="18" height="18" rx="5" fill="none" stroke="white" stroke-width="1.5"/>
+                            </svg>
+                            <span>Instagram</span>
+                        </button>
+                        <button class="platform-card" id="pc-tiktok" onclick="selectPlatform('tiktok')">
+                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="platform-svg">
+                                <rect width="24" height="24" rx="6" fill="#000"/>
+                                <path d="M16.5 4.5c.3 1.6 1.3 2.8 2.5 3.2v2.3c-1-.2-2-.7-2.8-1.4v5.9c0 2.7-2.2 4.5-4.7 4.5-2.6 0-4.7-2-4.7-4.5s2.1-4.5 4.7-4.5c.2 0 .4 0 .7.1v2.4c-.2-.1-.4-.1-.7-.1-1.3 0-2.3 1-2.3 2.1s1 2.1 2.3 2.1 2.3-1 2.3-2.1V4.5h2.7z" fill="white"/>
+                                <path d="M19 7.7c-.8-.4-1.4-1-1.8-1.8.4.8 1 1.4 1.8 1.8z" fill="#69C9D0"/>
+                            </svg>
+                            <span>TikTok</span>
+                        </button>
+                    </div>
+                    <input type="hidden" id="apiSelect" value="">
+                </div>
+
+                <!-- SERVİS SEÇ -->
+                <div class="field-group">
+                    <label class="field-label">
+                        <i class="fas fa-cogs"></i>
+                        Servis Seç
+                    </label>
+                    <div class="custom-select-wrapper">
+                        <select class="custom-select" id="serviceSelect" onchange="onServiceChange()" disabled>
+                            <option value="">— Önce API seçin —</option>
+                        </select>
+                        <i class="fas fa-chevron-down select-arrow"></i>
+                    </div>
+                </div>
+
+                <!-- MIKTAR -->
+                <div class="field-group" id="amountGroup" style="display:none;">
+                    <label class="field-label">
+                        <i class="fas fa-sort-amount-up"></i>
+                        Miktar
+                        <span class="amount-hint" id="amountHint"></span>
+                    </label>
+                    <input type="number" class="amount-input" id="amountInput"
+                        placeholder="Miktar girin..."
+                        oninput="onAmountChange()">
+                    <div class="amount-info" id="amountInfo"></div>
+                </div>
+
+            </div>
+
+            <!-- FİYAT KUTUSU -->
+            <div class="price-box" id="priceBox">
+                <div class="price-row total-row">
+                    <span class="price-label">Toplam Ücret</span>
+                    <span class="price-total" id="priceTotal">₺0.00</span>
+                </div>
+            </div>
+
+            <!-- MESAİ BİLGİSİ -->
+            <div class="schedule-card" id="scheduleCard">
+                <div class="schedule-icon" id="scheduleIcon"></div>
+                <div class="schedule-body">
+                    <h4 id="scheduleTitle"></h4>
+                    <p id="scheduleText"></p>
+                </div>
+            </div>
+
+            <!-- SATIN AL -->
+            <button class="btn-buy" id="buyBtn" onclick="handleOrder()" disabled>
+                <i class="fas fa-shopping-cart"></i>
+                Satın Al
+            </button>
+
+        </div>
+
+        <!-- FOOTER -->
+        <footer class="footer">
+            <div class="footer-inner">
+                <div class="footer-support">
+                    <p>Destek</p>
+                    <div class="footer-btns">
+                        <a href="https://wa.me/447795203704" target="_blank" class="footer-btn whatsapp"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+                        <a href="https://t.me/roxysatici" target="_blank" class="footer-btn telegram"><i class="fab fa-telegram"></i> Telegram</a>
+                    </div>
+                </div>
+                <p class="footer-copy">&copy; 2026 Roxy Store. Tüm hakları saklıdır.</p>
+            </div>
+        </footer>
+
+    </div>
+
+    <script src="roxy-alerts.js"></script>
+    <script src="social-media-script.js"></script>
+</body>
+</html>

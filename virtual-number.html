@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sanal Numara - Roxy Store</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="virtual-number-style.css">
+    <link rel="stylesheet" href="roxy-alerts.css">
+</head>
+<body>
+
+    <!-- SIDEBAR -->
+    <div class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <div class="logo">
+                <div class="logo-icon"><img src="roxy-logo.svg" alt="Roxy" style="width:28px;height:28px;"></div>
+                <div class="logo-text">
+                    <span class="logo-main">ROXY</span>
+                    <span class="logo-sub">STORE</span>
+                </div>
+            </div>
+            <button class="sidebar-close" onclick="toggleSidebar()"><i class="fas fa-times"></i></button>
+        </div>
+        <nav class="sidebar-nav">
+            <a href="dashboard.html" class="nav-item"><i class="fas fa-home"></i><span>Ana Sayfa</span></a>
+            <a href="virtual-number.html" class="nav-item active"><i class="fas fa-mobile-alt"></i><span>Sanal Numara</span></a>
+            <a href="social-media.html" class="nav-item"><i class="fas fa-chart-line"></i><span>Sosyal Medya</span></a>
+            <a href="balance.html" class="nav-item"><i class="fas fa-wallet"></i><span>Bakiye Ekle</span></a>
+            <a href="reviews.html" class="nav-item"><i class="fas fa-star"></i><span>Değerlendirmeler</span></a>
+        </nav>
+        <div class="sidebar-footer">
+            <button class="btn-support" onclick="window.location.href='support.html'">
+                <i class="fas fa-headset"></i><span>Destek</span>
+            </button>
+        </div>
+    </div>
+    <div class="overlay" id="overlay" onclick="toggleSidebar()"></div>
+
+    <!-- ANA İÇERİK -->
+    <div class="main-content">
+
+        <!-- TOPBAR -->
+        <div class="topbar">
+            <div class="topbar-left">
+                <button class="menu-toggle" onclick="toggleSidebar()"><i class="fas fa-bars"></i></button>
+                <div class="topbar-logo">
+                    <span class="logo-main">ROXY</span>
+                    <span class="logo-sub" style="letter-spacing:1.5px;">STORE</span>
+                </div>
+            </div>
+            <div class="topbar-right">
+                <div class="user-balance">
+                    <i class="fas fa-wallet"></i>
+                    <div>
+                        <span class="balance-label">Mevcut Bakiye</span>
+                        <span class="balance-amount">₺0.00</span>
+                    </div>
+                </div>
+                <div class="user-avatar" onclick="window.location.href='profile.html'" style="cursor:pointer;">
+                    <img src="https://ui-avatars.com/api/?name=User&background=00D9FF&color=fff" alt="User">
+                    <span>Kullanıcı</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- SAYFA İÇERİĞİ -->
+        <div class="container">
+            <div class="page-header">
+                <h1><i class="fas fa-mobile-alt"></i> Sanal Numara</h1>
+                <p>SMS doğrulama için güvenilir sanal numara hizmeti</p>
+            </div>
+
+            <!-- FORM KARTI -->
+            <div class="form-card">
+
+                <!-- API SEÇ -->
+                <div class="field-group">
+                    <label class="field-label">
+                        <i class="fas fa-plug"></i>
+                        API Seç
+                    </label>
+                    <div class="custom-select-wrapper">
+                        <select class="custom-select" id="apiSelect" onchange="updatePrice()">
+                            <option value="">— Seçiniz —</option>
+                            <option value="whatsapp">📱 WhatsApp</option>
+                            <option value="telegram">✈️ Telegram</option>
+                        </select>
+                        <i class="fas fa-chevron-down select-arrow"></i>
+                    </div>
+                </div>
+
+                <!-- SERVİS SEÇ -->
+                <div class="field-group">
+                    <label class="field-label">
+                        <i class="fas fa-globe"></i>
+                        Servis Seç
+                    </label>
+                    <div class="custom-select-wrapper">
+                        <select class="custom-select" id="serviceSelect" onchange="updatePrice()">
+                            <option value="">— Seçiniz —</option>
+                            <option value="global" data-price="200">🌍 Global</option>
+                            <option value="turkey" data-price="460">🇹🇷 Türkiye</option>
+                        </select>
+                        <i class="fas fa-chevron-down select-arrow"></i>
+                    </div>
+                </div>
+
+                <!-- FİYAT -->
+                <div class="price-box" id="priceBox">
+                    <span class="price-label">Toplam Ücret</span>
+                    <span class="price-value" id="priceValue">₺0.00</span>
+                </div>
+
+            </div>
+
+            <!-- UYARI KUTUSU -->
+            <div class="info-card">
+                <div class="info-icon"><i class="fas fa-info-circle"></i></div>
+                <div class="info-body">
+                    <h4>Önemli Bilgilendirme</h4>
+                    <p>Sanal numara işlemi <strong>tamamen manuel</strong> olarak gerçekleştirilmektedir.</p>
+                    <ul>
+                        <li>Hesabınızdaki bakiye ile satın alma işlemini tamamlayın</li>
+                        <li>Size özel bir <strong>sipariş numarası</strong> verilecektir</li>
+                        <li>Sipariş numaranızla <strong>WhatsApp</strong>'a yönlendirileceksiniz</li>
+                        <li>Destek ekibimiz numaranızı en kısa sürede iletecektir</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- SATIN AL -->
+            <button class="btn-buy" id="buyBtn" onclick="handleOrder()" disabled>
+                <i class="fas fa-shopping-cart"></i>
+                Satın Al
+            </button>
+
+        </div>
+
+        <!-- FOOTER -->
+        <footer class="footer">
+            <div class="footer-inner">
+                <div class="footer-support">
+                    <p>Destek</p>
+                    <div class="footer-btns">
+                        <a href="https://wa.me/447795203704" target="_blank" class="footer-btn whatsapp">
+                            <i class="fab fa-whatsapp"></i> WhatsApp
+                        </a>
+                        <a href="https://t.me/roxysatici" target="_blank" class="footer-btn telegram">
+                            <i class="fab fa-telegram"></i> Telegram
+                        </a>
+                    </div>
+                </div>
+                <p class="footer-copy">&copy; 2026 Roxy Store. Tüm hakları saklıdır.</p>
+            </div>
+        </footer>
+
+    </div>
+
+    <script src="roxy-alerts.js"></script>
+    <script src="virtual-number-script.js"></script>
+</body>
+</html>
